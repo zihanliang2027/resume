@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梁子函 · 个人简历</title>
+<style>
+/* ========= 全局主色（改这里就能换主题色） ========= */
+:root {
+  --primary: #3b5bdb;        /* 主色：深蓝 */
+  --primary-light: #eef2ff;  /* 主色浅底 */
+  --accent: #7c3aed;         /* 点缀色：紫罗兰 */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: #f8fafc;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  color: #1e293b;
+  line-height: 1.6;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+.page {
+  max-width: 1000px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.06);
+  padding: 2.5rem 2.2rem;
+  border-top: 6px solid var(--primary);
+}
+hr {
+  border: none;
+  border-top: 1px solid #e9eef3;
+  margin: 2rem 0;
+}
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+.name-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.avatar {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--primary-light);
+  flex-shrink: 0;
+  background: #f1f5f9;
+}
+.name-title h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+.subhead {
+  font-size: 1.05rem;
+  color: var(--primary);
+  font-weight: 500;
+  border-left: 3px solid var(--primary);
+  padding-left: 0.85rem;
+}
+.contact-info {
+  text-align: right;
+  font-size: 0.95rem;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.contact-info a {
+  color: #475569;
+  text-decoration: none;
+}
+.contact-info a:hover {
+  color: var(--primary);
+}
+
+/* 内推码样式 */
+.referral-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  border: 1px dashed var(--primary);
+}
+.referral-box .code {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.bio {
+  margin-top: 1.5rem;
+  font-size: 1.02rem;
+  color: #334155;
+  line-height: 1.8;
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary-light);
+}
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.3rem;
+}
+.section-title::before {
+  content: '';
+  width: 5px;
+  height: 22px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+.skill-tag {
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  border: 1px solid #e9eef3;
+}
+.skill-tag:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.exp-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+.role {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+.company {
+  color: var(--primary);
+  font-size: 0.92rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+.date {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+.desc {
+  grid-column: 1 / -1;
+  font-size: 0.94rem;
+  color: #334155;
+  margin-top: 0.25rem;
+  line-height: 1.7;
+}
+.desc ul {
+  margin-top: 0.4rem;
+  padding-left: 1.2rem;
+}
+.desc li {
+  margin-bottom: 0.25rem;
+}
+
+/* 作品集按钮 */
+.portfolio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.portfolio-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  color: var(--primary);
+}
+@media (max-width: 700px) {
+  .page { padding: 1.8rem 1.5rem; }
+  .header { flex-direction: column; align-items: flex-start; }
+  .contact-info { text-align: left; width: 100%; }
+  .name-title h1 { font-size: 2rem; }
+  .avatar { width: 80px; height: 112px; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.2rem; }
+  .date { margin-bottom: 0.2rem; }
+  .section-title { font-size: 1.2rem; }
+  .footer-links { gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="name-block">
+      <img src="photo.jpg" alt="个人照片" class="avatar">
+      <div class="name-title">
+        <h1>梁子函</h1>
+        <div class="subhead">市场运营 / 用户运营 / 游戏发行 · 2027届</div>
+      </div>
+    </div>
+    <div class="contact-info">
+      <a href="mailto:1718593227@qq.com">1718593227@qq.com</a>
+      <a href="tel:16637951638">166 3795 1638</a>
+      <a href="https://docs.qq.com/pdf/DTVN2c2pWTkJid25W" target="_blank">📎 查看作品集（PDF）</a>
+      <div class="referral-box">
+        内推码：<span class="code">NTAgjbg</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio">
+    会计学专业，具备扎实的数据分析与逻辑推演能力，擅长用数据归因解决业务问题。
+    深耕二次元及 MMO / RPG 游戏领域，对用户心理、社区生态与内容传播有直接观察。
+    能独立完成数据整理与复盘，致力于在游戏市场 / 发行领域，将数据洞察与用户视角结合，实现可量化的增长结果。
+  </div>
+
+  <hr>
+
+  <div class="section-title">技能清单</div>
+  <div class="skills-grid">
+    <span class="skill-tag">Excel 数据透视表</span>
+    <span class="skill-tag">数据整理与归因分析</span>
+    <span class="skill-tag">异常监控</span>
+    <span class="skill-tag">平台流量逻辑洞察</span>
+    <span class="skill-tag">剪映专业版 / PR / AE</span>
+    <span class="skill-tag">Photoshop</span>
+    <span class="skill-tag">Word / PPT</span>
+    <span class="skill-tag">CET-4</span>
+    </div>
+
+  <hr>
+
+  <div class="section-title">游戏阅历</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div><span class="role">开放世界与动作类 RPG</span></div>
+      <div class="desc">《原神》《鸣潮》《燕云十六声》等。对开放世界探索、动作战斗系统有深度体验，关注游戏内付费机制与氪金逻辑，能从玩家视角理解不同付费点的吸引力。</div>
+    </div>
+    <div class="exp-item">
+      <div><span class="role">策略类 RPG</span></div>
+      <div class="desc">《崩坏：星穹铁道》《明日方舟》系列、《重返未来1999》等。偏好宏大世界观与高水准剧情，长期跟进版本动态，对角色数值、关卡机制与用户留存逻辑有一定研究。</div>
+    </div>
+    <div class="exp-item">
+      <div><span class="role">MMO / 大型多人在线</span></div>
+      <div class="desc">《逆水寒》手游、《燕云十六声》。关注 MMO 品类的大世界玩法、社交生态与玩家留存逻辑。</div>
+    </div>
+    <div class="exp-item">
+      <div><span class="role">女性向 / 乙女游戏</span></div>
+      <div class="desc">《时空中的绘旅人》（开服玩家）、《未定事件簿》。对女性向用户情感诉求与社区氛围有直接观察与了解。</div>
+    </div>
+    <div class="exp-item">
+      <div><span class="role">竞技类与多品类游戏</span></div>
+      <div class="desc">《第五人格》《无畏契约》等及沙盒建造类游戏（如《Minecraft》）。关注竞技类游戏社区生态与玩家氛围，对多品类玩法的用户心理有直观认知。</div>
+    </div>
+    <div class="exp-item">
+      <div><span class="role">ACG 文化积淀</span></div>
+      <div class="desc">对日漫、国漫等漫画类、动画类作品有广泛了解，熟悉 ACG 圈层文化，能快速捕捉社区热梗与二创趋势。</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section-title">内容与社区洞察</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <span class="role">小红书个人账号运营</span>
+        <span class="company">独立运营</span>
+      </div>
+      <div class="date">2026.05 — 至今</div>
+      <div class="desc">
+        <ul>
+          <li>独立运营个人账号，累计发布 18 篇二次元相关内容，最高单篇浏览量突破 <strong>120,000+</strong>。</li>
+          <li><strong>流量机制洞察</strong>：通过实操总结出小红书「互动率驱动推流」的核心逻辑，善于利用「求助 / 共鸣」型选题降低用户互动门槛，精准触发平台算法推荐。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section-title">作品集</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <span class="role">《异环》市场与用户分析报告</span>
+        <span class="company">竞品研究 / 数据分析</span>
+      </div>
+      <div class="desc">
+        基于开服玩家视角，对比《异环》与《鸣潮》的产品基本面、核心玩法、商业化、市场表现与社区舆情，
+        提炼卖点与用户画像，并提出「海特洛生活家」小红书 / 抖音 UGC 拉新方案（预期曝光 50-100 万，ROI 约 1:3）。
+      </div>
+      <a href="https://docs.qq.com/pdf/DTVN2c2pWTkJid25W" class="portfolio-btn" target="_blank">📄 查看完整报告（PDF）</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section-title">校园经历</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <span class="role">班级文艺委员</span>
+        <span class="company">组织与协调</span>
+      </div>
+      <div class="desc">
+        <ul>
+          <li>策划并组织多次班级团建活动（涵盖集体游戏与节日主题活动），负责流程设计、人员分工与现场协调。</li>
+          <li>参与组织与编排院系级比赛，负责团队排练与现场统筹，具备良好的沟通协作与项目管理意识。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <span class="role">专业实训与课程项目</span>
+        <span class="company">会计学</span>
+      </div>
+      <div class="desc">
+        <ul>
+          <li>参与 ERP 沙盘模拟、财务做账实操及数据分析课程实训。</li>
+          <li>熟练使用 Excel（含数据透视表、函数公式等）进行数据整理、清洗、多维度分析与可视化呈现。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer-links">
+    <a href="mailto:1718593227@qq.com">邮箱联系</a>
+    <a href="tel:16637951638">电话联系</a>
+    <a href="https://docs.qq.com/pdf/DTVN2c2pWTkJid25W" target="_blank">作品集（PDF）</a>
+  </div>
+
+</div>
+</body>
+</html>
